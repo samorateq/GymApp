@@ -38,7 +38,12 @@ async function renderPage(): Promise<void> {
   `;
 
   try {
-    const data = await getExercises();
+    const data = await getExercises({
+      page: 1,
+      limit: 15,
+      sortBy: "title",
+      order: "asc",
+    });
 
     app.innerHTML = `
       <header class="bg-dark text-white shadow-sm">
