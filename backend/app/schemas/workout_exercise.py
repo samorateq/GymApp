@@ -5,10 +5,26 @@ from pydantic import BaseModel, ConfigDict, Field
 
 class WorkoutExerciseCreate(BaseModel):
     exercise_id: int
+
     approaches: int = Field(gt=0, le=10)
-    repetitions: Optional[int] = Field(default=None, gt=0, le=100)
-    weight: Optional[float] = Field(default=None, ge=0, le=5)
-    rest_seconds: Optional[int] = Field(default=None, ge=0, le=3600)
+
+    repetitions: Optional[int] = Field(
+        default=None,
+        gt=0,
+        le=100,
+    )
+
+    weight: Optional[float] = Field(
+        default=None,
+        ge=0,
+        le=1000,
+    )
+
+    rest_seconds: Optional[int] = Field(
+        default=None,
+        ge=0,
+        le=3600,
+    )
 
 
 class WorkoutExerciseResponse(WorkoutExerciseCreate):
